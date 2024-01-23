@@ -8,7 +8,7 @@ const theme:ThemeInstance = useTheme()
 
 const toggleTheme = () => {
   theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark';
-  theme.global.name.value == 'light' ? isLight.value = false : isLight.value = true; 
+  theme.global.name.value == 'light' ? isLight.value = true : isLight.value = false; 
   
 }
 </script>
@@ -16,7 +16,7 @@ const toggleTheme = () => {
 
 <template>
     <button class="theme-switch-btn">
-        <div class="text" id="light-theme-text" :class="{'disabled': isLight}">Light</div>
+        <div class="text" id="light-theme-text" :class="{'disabled': !isLight}">Light</div>
         <div class="theme-switch-wrapper">
           <label for="theme-btn">
             <input @change="toggleTheme" type="checkbox" id="theme-btn">
@@ -31,7 +31,7 @@ const toggleTheme = () => {
             </div>
           </label>
         </div>
-        <div class="text" :class="{'disabled': !isLight}" id="dark-theme-text">Dark</div>
+        <div class="text" :class="{'disabled': isLight}" id="dark-theme-text">Dark</div>
     </button>
 </template>
 
